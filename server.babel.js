@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
@@ -14,6 +15,8 @@ mongoose.connect('mongodb://localhost/profiles')
     });
 
 var profileRouter = require('./src/routes/profileRouter.js');
+
+app.use(bodyParser());
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')

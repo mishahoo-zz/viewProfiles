@@ -5,8 +5,21 @@ var profileRouter = express.Router();
 // Require Profile model in our routes module
 var Profile = require('../models/Profile');
 
+// Defined get data(index or listing) route
+profileRouter.route('/').get(function (req, res) {
+  Profile.find(function (err, itms){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(itms);
+    }
+  });
+});
+
 // Defined store route
 profileRouter.route('/add').post(function (req, res) {
+  console.log('in server add user route', req.body);
   var profile = new Profile(req.body);
       profile.save()
     .then(profile => {
@@ -32,7 +45,12 @@ profileRouter.route('/update/:id').post(function (req, res) {
       return next(new Error('Could not find profile'));
     else {
       // do your updates here
-      profile.profile = req.body.profile;
+      console.log('profile was found', profile);
+      console.log('req.body', req.body);
+
+      profile.photo = req.body.photo;
+      profile.name = req.body.name;
+      profile.description = req.body.description;
 
       profile.save().then(profile => {
           res.json('Update complete');

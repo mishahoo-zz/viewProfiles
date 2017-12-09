@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dashboard from './Dashboard.js'
+
+console.log('IN THE CLIENT')
 
 ReactDOM.render(
-  <h1>Hello, People!</h1>,
+  <Dashboard />,
   document.getElementById('root')
 );
