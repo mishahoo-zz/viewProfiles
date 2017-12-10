@@ -7,8 +7,9 @@ const Header = () => (
   <header>
     <nav>
       <ul>
-        <li><Link to='/add'>Add Profile</Link></li>
-        <li><Link to='/'>See Profiles</Link></li>
+        <li><Link to='/'>Main</Link></li>
+        <li><Link to='/all'>View Profiles</Link></li>
+        <li><Link to='/updateUser'>Add Profile</Link></li>
       </ul>
     </nav>
   </header>
