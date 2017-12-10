@@ -21,11 +21,12 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    const initalID = '5a2c5d44389fbb067fde09dc'
+    const initalID = '5a2daea49bfec236017858cc'
     axios.getProfile(initalID)
       .then(response => {
         this.setState({
           id: response.data.id,
+          photo: response.data.photo,
           name: response.data.name,
           description: response.data.description
         });
@@ -99,6 +100,7 @@ class Main extends Component {
         <Profiles
           profiles={this.state.profiles}
           handleProfileClick={this.handleProfileClick.bind(this)}
+          updateProfiles={this.updateProfiles.bind(this)}
         />
       )
     }

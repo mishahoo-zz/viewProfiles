@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var profileRouter = express.Router();
 
+var multer  = require('multer')
+var upload = multer({ dest: 'public/images' })
+
 // Require Profile model in our routes module
 var Profile = require('../models/Profile');
 
@@ -18,12 +21,14 @@ profileRouter.route('/').get(function (req, res) {
 });
 
 // Defined store route
-profileRouter.route('/add').post(function (req, res) {
-  console.log('in server add user route', req.body);
-  var profile = new Profile(req.body);
+// Add multer middleware!!!!
+profileRouter.route('/add').post( upload.single('photo'), function (req, res) {
+  console.log('in server add user route', req.body, req.file.filename);
+  var profile = new Profile({...req.body, photo: req.file.filename});
       profile.save()
     .then(profile => {
-    res.json('Profile added successfully');
+    res.json(profile);
+    console.log("profile successfully added")
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -60,6 +65,15 @@ profileRouter.route('/update/:id').post(function (req, res) {
       });
     }
   });
+});
+
+// Defined delete | remove | destroy route
+profileRouter.route('/delete/:id').get(function (req, res) {
+  Profile.findByIdAndRemove({_id: req.params.id},
+       function(err, profile){
+        if(err) res.json(err);
+        else res.json('Successfully removed');
+    });
 });
 
 
