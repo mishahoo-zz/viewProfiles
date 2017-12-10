@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 var bodyParser = require('body-parser');
 
@@ -27,5 +28,9 @@ app.use(function(req, res, next) {
 app.use('/', express.static('public'));
 
 app.use('/profiles', profileRouter);
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 app.listen(process.env.PORT || 3000);

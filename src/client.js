@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dashboard from './Dashboard.js'
+import App from './components/App.js'
 
 console.log('IN THE CLIENT')
 
 ReactDOM.render(
-  <Dashboard />,
+  <App />,
   document.getElementById('root')
 );

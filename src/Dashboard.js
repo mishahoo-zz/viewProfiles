@@ -68,11 +68,11 @@ class Dashboard extends Component {
     render() {
       return (
         <div>
+          <button type="button" onClick={ this.handleAddUserClick }>Add Profile</button>
+          <button type="button" onClick={ this.handleGetProfilesClick }>Get Profiles</button>
           <h1>{this.state.name}</h1>
           <h3>{this.state.description}</h3>
           <div>{this.state.id}</div>
-          <button type="button" onClick={ this.handleAddUserClick }>Add Profile</button>
-          <button type="button" onClick={ this.handleGetProfilesClick }>Get Profiles</button>
           <button type="button" onClick={ this.handleEditProfileClick }>Edit Profile</button>
         </div>
       );
