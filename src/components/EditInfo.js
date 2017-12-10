@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 // import ItemService from './ItemService';
 import * as axios from '../axiosCalls'
 
@@ -6,6 +7,9 @@ class EditInfo extends Component {
 
   constructor(props) {
       super(props);
+      this.state = {
+        redirect: false
+      }
     }
     componentDidMount(){}
 
@@ -43,20 +47,29 @@ class EditInfo extends Component {
         description: e.target.description.value
       }
       this.handleAddUserClick(user);
+      this.setState({redirect: true});
       // console.log(e.target.name.value, e.target.description.value);
     }
 
     render() {
+      const { redirect } = this.state;
+
+      if ( redirect ) {
+        return <Redirect to={'/'}/>
+      }
+
       return (
         <form onSubmit={this.onSubmit.bind(this)}>
           <label>
             Name:
+            <br></br>
             <input type="text" name="name" />
           </label>
           <br></br>
           <label>
             Description:
-            <input type="text" name="description" />
+            <br></br>
+            <textarea type="text" name="description" />
           </label>
           <br></br>
           <input type="submit" value="Submit" />

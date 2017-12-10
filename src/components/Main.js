@@ -63,7 +63,6 @@ class Main extends Component {
       })
   }
 
-
   render() {
 
     const MyProfile = (props) => {
@@ -77,6 +76,15 @@ class Main extends Component {
     }
 
     const MyProfiles = (props) => {
+      return (
+        <Profiles
+          profiles={this.state.profiles}
+          handleProfileClick={this.handleProfileClick.bind(this)}
+        />
+      )
+    }
+
+    const MyEdit = (props) => {
       return (
         <Profiles
           profiles={this.state.profiles}
