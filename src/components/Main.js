@@ -47,20 +47,26 @@ class Main extends Component {
       })
   }
 
-  handleProfileClick(id) {
+  handleProfileClick({id, photo, name, description}) {
     console.log('handleProfileClick')
-    axios.getProfile(id)
-      .then(response => {
-        this.setState({
-          id: response.data.id,
-          name: response.data.name,
-          description: response.data.description
-        });
-        console.log('from server route!!', response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    this.setState({
+      id: id,
+      photo: photo,
+      name: name,
+      description: description
+    });
+    // axios.getProfile(id)
+    //   .then(response => {
+    //     this.setState({
+    //       id: response.data.id,
+    //       name: response.data.name,
+    //       description: response.data.description
+    //     });
+    //     // console.log('from server route!!', response.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
   }
 
   render() {

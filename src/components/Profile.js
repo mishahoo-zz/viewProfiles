@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Profile = ({id, photo, name, description, handleProfileClick}) => (
-  <div onClick={() => handleProfileClick(id)}>
+const Profile = ({profile, handleProfileClick}) => (
+  <div onClick={() => handleProfileClick(profile)}>
     <Link to='/'>
-      <h1>{name}</h1>
+      <h3>{profile.name}</h3>
     </Link>
-    <h3>{description}</h3>
+    <div>{profile.description}</div>
   </div>
 )
 
