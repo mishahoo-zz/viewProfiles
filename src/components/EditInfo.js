@@ -20,6 +20,9 @@ class EditInfo extends Component {
         description: description
       }).then(response => {
         console.log('user added');
+        // console.log(response.data);
+        this.props.handleProfileClick(response.data);
+        this.props.updateProfiles();
       })
       .catch(function (error) {
         console.log(error);

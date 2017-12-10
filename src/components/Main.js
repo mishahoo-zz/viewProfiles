@@ -69,6 +69,19 @@ class Main extends Component {
     //   })
   }
 
+  updateProfiles() {
+    axios.getProfiles()
+      .then(response => {
+        this.setState({
+          profiles: response.data
+        });
+        // console.log('should be all users', response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
   render() {
 
     const MyProfile = (props) => {
@@ -90,11 +103,11 @@ class Main extends Component {
       )
     }
 
-    const MyEdit = (props) => {
+    const MyEditInfo = (props) => {
       return (
-        <Profiles
-          profiles={this.state.profiles}
+        <EditInfo
           handleProfileClick={this.handleProfileClick.bind(this)}
+          updateProfiles={this.updateProfiles.bind(this)}
         />
       )
     }
@@ -104,7 +117,7 @@ class Main extends Component {
         <Switch>
           <Route exact path='/' component={MyProfile}/>
           <Route path='/all' component={MyProfiles}/>
-          <Route path='/updateUser' component={EditInfo}/>
+          <Route path='/updateUser' component={MyEditInfo}/>
         </Switch>
       </main>
     )
