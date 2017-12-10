@@ -28,7 +28,7 @@ class Main extends Component {
           id: response.data.id,
           name: response.data.name,
           description: response.data.description
-         });
+        });
         console.log('from server route First time', response.data);
       })
       .catch(function (error) {
@@ -39,7 +39,7 @@ class Main extends Component {
       .then(response => {
         this.setState({
           profiles: response.data
-         });
+        });
         // console.log('should be all users', response.data);
       })
       .catch(function (error) {
@@ -55,7 +55,7 @@ class Main extends Component {
           id: response.data.id,
           name: response.data.name,
           description: response.data.description
-         });
+        });
         console.log('from server route!!', response.data);
       })
       .catch(function (error) {
