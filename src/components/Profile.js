@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom'
 import { deleteProfile } from '../axiosCalls'
 
 const Profile = ({profile, handleProfileClick, updateProfiles}) => (
-  <div>
+  <div className="small-profile">
     <div onClick={() => {
       console.log('user id', profile._id)
       handleProfileClick(profile)
     }}>
-      <Link to='/'>
-        <img src={`/images/${profile.photo}`} alt="photo" height="150"/>
+      <Link className="link" to='/'>
+        <div className="image-container">
+          <img className="small-image" src={`/images/${profile.photo}`} alt="photo" height="150"/>
+        </div>
         <h3>{profile.name}</h3>
       </Link>
-      <div>{profile.description}</div>
     </div>
     <button type="button" onClick={() => {
       deleteProfile(profile._id)

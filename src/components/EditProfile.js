@@ -56,11 +56,11 @@ class EditProfile extends Component {
       }
 
       return (
-        <form onSubmit={this.onSubmit.bind(this)}>
+        <form className="forms" onSubmit={this.onSubmit.bind(this)}>
           {this.state.photo ?
             <img src={this.state.photo.preview} alt="Smiley face" height="150" /> :
             <DropZone onDrop={this.onDrop.bind(this)}>
-              <p>Update Photo</p>
+              <p className="upload-text" >Update Photo</p>
             </DropZone>
           }
           <br></br>
