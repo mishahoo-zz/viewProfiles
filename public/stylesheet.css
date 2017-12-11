@@ -20,7 +20,6 @@ li {
 }
 
 .small-profile {
-  /*display: inline-block;*/
   float: left;
   width: 140px;
   margin: 25px;
@@ -30,24 +29,19 @@ li {
 }
 
 .small-image {
-  width: 100%;
-  height: auto;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .image-container {
-  max-width: 120px;
-  min-height: 120px;
+  width: 120px;
   height: 120px;
-  margin: 3px;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .large-profile, .forms {
-  /*display: inline-block;*/
-  /*float: left;*/
   width: 400px;
-  /*height: 400px;*/
   margin: 100px 90% auto 10%;
   background-color: white;
   padding: 30px;
@@ -55,16 +49,13 @@ li {
 }
 
 .large-image {
-  width: 100%;
-  height: auto;
+  min-width: 100%;
+  min-height: 125%
 }
 
 .large-image-container {
-  max-width: 400px;
-  min-height: 400px;
-  max-height: 400px;
-  height: 120px;
-  /*margin: 3px;*/
+  width: 400px;
+  height: 400px;
   border-radius: 10px;
   overflow: hidden;
 }
