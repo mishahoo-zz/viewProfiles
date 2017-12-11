@@ -37,8 +37,18 @@ profileRouter.route('/add').post( upload.single('photo'), function (req, res) {
 
 // Defined edit route
 profileRouter.route('/edit/:id').get(function (req, res) {
+  console.log('inside edit route', req.params.name);
   var id = req.params.id;
   Profile.findById(id, function (err, profile){
+      res.json(profile);
+  });
+});
+
+// Defined find by name route
+profileRouter.route('/find/:name').get(function (req, res) {
+  console.log('inside find by name route', req.params.name);
+  var nameInfo = { name: req.params.name };
+  Profile.findOne(nameInfo, function (err, profile){
       res.json(profile);
   });
 });

@@ -28,12 +28,12 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    const initalID = '5a2e31d3cd18f0742d80052c'
-    axios.getProfile(initalID)
+    const name = 'Misha'
+    axios.getProfileByName(name)
       .then(extractData)
       // .then(this.setState.bind(this))
       .then((profile) => {
-        // console.log('from inital render', profile)
+        console.log('from initial render', profile)
         this.setState({user: profile})
         // console.log('from inital render state', this.state)
       })

@@ -7,6 +7,11 @@ export function getProfile(id) {
   return axios.get('http://localhost:3000/profiles/edit/' + id);
 }
 
+export function getProfileByName(name) {
+  console.log('inside getProfileByName axios', name)
+  return axios.get('http://localhost:3000/profiles/find/' + name);
+}
+
 export function addProfile(user) {
   // console.log('in axiosCalls/index.js user', user);
   const data = new FormData();
