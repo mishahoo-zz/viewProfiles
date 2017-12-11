@@ -1,6 +1,6 @@
-## Set up:
-1. Clone the repo:    
+## Set up:    
 `$ npm install`    
 `$ mongod`
 `$ npm run seed-database`
 `$ npm run dev`  
+note: seeded data will not be editable
