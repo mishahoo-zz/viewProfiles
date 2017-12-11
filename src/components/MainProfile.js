@@ -8,9 +8,12 @@ const MainProfile = ({user}) => (
     </div>
     <h1>{user.name}</h1>
     <h3>{user.description}</h3>
-    <Link className="link" to='/editProfile'>
-      <button type="button">edit</button>
-    </Link>
+    { (user.name === 'Misha') ?
+      <div></div> :
+      <Link className="link" to='/editProfile'>
+        <button type="button">edit</button>
+      </Link>
+    }
   </div>
 )
 

@@ -25,7 +25,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
         .catch(function (error) {
           console.log(error);
         })
-    }}>delete</button> */}
+    }}>x</button> */}
   </div>
 )
 
