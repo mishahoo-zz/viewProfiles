@@ -19,13 +19,16 @@ class Main extends Component {
       // photo: '',
       // name: '',
       // description: '',
-      user: {},
+      user: {
+        name: 'Misha',
+        description: 'hey'
+      },
       profiles: []
     };
   }
 
   componentDidMount(){
-    const initalID = '5a2daea49bfec236017858cc'
+    const initalID = '5a2e31d3cd18f0742d80052c'
     axios.getProfile(initalID)
       .then(extractData)
       // .then(this.setState.bind(this))
