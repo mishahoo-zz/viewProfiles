@@ -4,7 +4,7 @@ import DropZone from 'react-dropzone';
 
 import * as axios from '../axiosCalls'
 
-class AddProfile extends Component {
+class EditProfile extends Component {
 
   constructor(props) {
       super(props);
@@ -17,24 +17,27 @@ class AddProfile extends Component {
 
 
     handleEditProfileClick(id, user) {
-      axios.updateProfile(user).then(response => {
-        console.log('Comment Updated');
-      })
-      .catch(function (error) {
+      axios.updateProfile(id, user).then(response => {
+        console.log('Profile Updated');
+        // console.log('after edit', response.data)
+        this.props.handleProfileClick(response.data);
+        this.props.updateProfiles();
+      }).catch(function (error) {
         console.log(error);
       })
     }
 
     onSubmit(e, props) {
       e.preventDefault();
+      const id = this.props.user._id
       const user = {
         photo: this.state.photo,
         name: e.target.name.value,
         description: e.target.description.value
       }
-      this.handleAddUserClick(user);
+      this.handleEditProfileClick(id, user);
       this.setState({redirect: true});
-      // console.log(e.target.name.value, e.target.description.value);
+      console.log('from onSubmit', user);
     }
 
     onDrop(files) {
@@ -45,6 +48,7 @@ class AddProfile extends Component {
     }
 
     render() {
+      const user = this.props.user;
       const { redirect } = this.state;
 
       if ( redirect ) {
@@ -56,20 +60,20 @@ class AddProfile extends Component {
           {this.state.photo ?
             <img src={this.state.photo.preview} alt="Smiley face" height="150" /> :
             <DropZone onDrop={this.onDrop.bind(this)}>
-              <p>Add Photo</p>
+              <p>Update Photo</p>
             </DropZone>
           }
           <br></br>
           <label>
-            Name:
+            Update Name:
             <br></br>
-            <input type="text" name="name" />
+            <input type="text" name="name" placeholder={user.name} />
           </label>
           <br></br>
           <label>
-            Description:
+            Update Description:
             <br></br>
-            <textarea type="text" name="description" />
+            <textarea type="text" name="description" placeholder={user.description} />
           </label>
           <br></br>
           <input type="submit" value="Submit" />
@@ -78,4 +82,4 @@ class AddProfile extends Component {
     }
   }
 
-export default AddProfile;
+export default EditProfile;

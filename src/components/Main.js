@@ -48,13 +48,10 @@ class Main extends Component {
       })
   }
 
-  handleProfileClick({id, photo, name, description}) {
-    console.log('handleProfileClick')
+  handleProfileClick(user) {
+    console.log('handleProfileClick user data', user)
     this.setState({
-      id: id,
-      photo: photo,
-      name: name,
-      description: description
+      user: user
     });
     // axios.getProfile(id)
     //   .then(response => {
@@ -121,6 +118,7 @@ class Main extends Component {
       return (
         <EditProfile
           user={this.state.user}
+          handleProfileClick={this.handleProfileClick.bind(this)}
           updateProfiles={this.updateProfiles.bind(this)}
         />
       )

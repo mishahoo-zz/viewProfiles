@@ -44,7 +44,8 @@ profileRouter.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-profileRouter.route('/update/:id').post(function (req, res) {
+profileRouter.route('/update/:id').post( upload.single('photo'), function (req, res) {
+  console.log('in server update route', req.body, req.file.filename);
   Profile.findById(req.params.id, function(err, profile) {
     if (!profile)
       return next(new Error('Could not find profile'));
@@ -53,12 +54,12 @@ profileRouter.route('/update/:id').post(function (req, res) {
       console.log('profile was found', profile);
       console.log('req.body', req.body);
 
-      profile.photo = req.body.photo;
+      profile.photo = req.file.filename;
       profile.name = req.body.name;
       profile.description = req.body.description;
 
       profile.save().then(profile => {
-          res.json('Update complete');
+          res.json(profile);
       })
       .catch(err => {
             res.status(400).send("unable to update the database");

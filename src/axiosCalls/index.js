@@ -22,12 +22,14 @@ export function getProfiles() {
   return axios.get('http://localhost:3000/profiles/');
 }
 
-export function updateProfile(id, { photo, name, description }) {
-  return axios.post('http://localhost:3000/profiles/update/' + id, {
-    photo: photo,
-    name: name,
-    description: description
-  });
+export function updateProfile(id, user) {
+  const data = new FormData();
+
+  for (const key in user) {
+    data.append(key, user[key])
+  }
+
+  return axios.post('http://localhost:3000/profiles/update/' + id, data);
 }
 
 export function deleteProfile(id) {
