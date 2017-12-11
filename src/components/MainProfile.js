@@ -1,10 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const MainProfile = ({photo, name, description}) => (
+const MainProfile = ({user}) => (
   <div>
-    <img src={`/images/${photo}`} alt="photo" height="300"/>
-    <h1>{name}</h1>
-    <h3>{description}</h3>
+    {/* {console.log('user in main profile', user)} */}
+    <img src={`/images/${user.photo}`} alt="photo" height="300"/>
+    <h1>{user.name}</h1>
+    <h3>{user.description}</h3>
+    <Link to='/editProfile'>
+      <button type="button">edit</button>
+    </Link>
   </div>
 )
 

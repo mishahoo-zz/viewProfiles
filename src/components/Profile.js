@@ -10,6 +10,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
       handleProfileClick(profile)
     }}>
       <Link to='/'>
+        <img src={`/images/${profile.photo}`} alt="photo" height="150"/>
         <h3>{profile.name}</h3>
       </Link>
       <div>{profile.description}</div>

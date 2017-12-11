@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+//extract data here and .then all the calls
+//rename axiosCalls to utils and index.js to api.js
+
 export function getProfile(id) {
   return axios.get('http://localhost:3000/profiles/edit/' + id);
 }

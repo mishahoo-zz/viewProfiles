@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Profile = require('./profileSchema.js');
 
+//create a script in your package json that runs the script for your seed data
+//outline that in the readme
 
 var Misha = new Profile ({
   photo: 'Misha',

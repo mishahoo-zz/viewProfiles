@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import EditInfo from './EditInfo'
+import AddProfile from './AddProfile'
+import EditProfile from './EditProfile'
 import Profiles from './Profiles'
 import MainProfile from './MainProfile'
 
@@ -8,14 +9,17 @@ import * as axios from '../axiosCalls'
 
 // The Main component renders one of the provided
 // Routes (provided that one matches).
+const extractData = (response) => response.data
+
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
-      photo: '',
-      name: '',
-      description: '',
+      // id: '',
+      // photo: '',
+      // name: '',
+      // description: '',
+      user: {},
       profiles: []
     };
   }
@@ -23,18 +27,14 @@ class Main extends Component {
   componentDidMount(){
     const initalID = '5a2daea49bfec236017858cc'
     axios.getProfile(initalID)
-      .then(response => {
-        this.setState({
-          id: response.data.id,
-          photo: response.data.photo,
-          name: response.data.name,
-          description: response.data.description
-        });
-        console.log('from server route First time', response.data);
+      .then(extractData)
+      // .then(this.setState.bind(this))
+      .then((profile) => {
+        // console.log('from inital render', profile)
+        this.setState({user: profile})
+        // console.log('from inital render state', this.state)
       })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .catch(console.error)
 
     axios.getProfiles()
       .then(response => {
@@ -83,14 +83,17 @@ class Main extends Component {
       })
   }
 
+
+  // deleteProfile() {
+  //
+  // }
+
   render() {
 
-    const MyProfile = (props) => {
+    const MyMainProfile = (props) => {
       return (
         <MainProfile
-          photo={this.state.photo}
-          name={this.state.name}
-          description={this.state.description}
+          user={this.state.user}
         />
       )
     }
@@ -105,10 +108,19 @@ class Main extends Component {
       )
     }
 
-    const MyEditInfo = (props) => {
+    const MyAddProfile = (props) => {
       return (
-        <EditInfo
+        <AddProfile
           handleProfileClick={this.handleProfileClick.bind(this)}
+          updateProfiles={this.updateProfiles.bind(this)}
+        />
+      )
+    }
+
+    const MyEditProfile = (props) => {
+      return (
+        <EditProfile
+          user={this.state.user}
           updateProfiles={this.updateProfiles.bind(this)}
         />
       )
@@ -117,9 +129,10 @@ class Main extends Component {
     return (
       <main>
         <Switch>
-          <Route exact path='/' component={MyProfile}/>
+          <Route exact path='/' component={MyMainProfile}/>
           <Route path='/all' component={MyProfiles}/>
-          <Route path='/updateUser' component={MyEditInfo}/>
+          <Route path='/addProfile' component={MyAddProfile}/>
+          <Route path='/editProfile' component={MyEditProfile}/>
         </Switch>
       </main>
     )

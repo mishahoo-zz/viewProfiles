@@ -9,7 +9,7 @@ const Header = () => (
       <ul>
         <li><Link to='/'>Main</Link></li>
         <li><Link to='/all'>View Profiles</Link></li>
-        <li><Link to='/updateUser'>Add Profile</Link></li>
+        <li><Link to='/addProfile'>Add Profile</Link></li>
       </ul>
     </nav>
   </header>
