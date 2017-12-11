@@ -8,18 +8,15 @@ export function getProfile(id) {
 }
 
 export function getProfileByName(name) {
-  console.log('inside getProfileByName axios', name)
   return axios.get('http://localhost:3000/profiles/find/' + name);
 }
 
 export function addProfile(user) {
-  // console.log('in axiosCalls/index.js user', user);
   const data = new FormData();
 
   for (const key in user) {
     data.append(key, user[key])
   }
-  // console.log('in axiosCalls/index.js data', data);
   return axios.post('http://localhost:3000/profiles/add/', data);
 }
 

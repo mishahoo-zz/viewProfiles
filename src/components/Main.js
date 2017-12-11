@@ -15,14 +15,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id: '',
-      // photo: '',
-      // name: '',
-      // description: '',
-      user: {
-        name: 'Misha',
-        description: 'hey'
-      },
+      user: {},
       profiles: []
     };
   }
@@ -33,9 +26,7 @@ class Main extends Component {
       .then(extractData)
       // .then(this.setState.bind(this))
       .then((profile) => {
-        console.log('from initial render', profile)
         this.setState({user: profile})
-        // console.log('from inital render state', this.state)
       })
       .catch(console.error)
 
@@ -44,7 +35,6 @@ class Main extends Component {
         this.setState({
           profiles: response.data
         });
-        // console.log('should be all users', response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -52,22 +42,9 @@ class Main extends Component {
   }
 
   handleProfileClick(user) {
-    console.log('handleProfileClick user data', user)
     this.setState({
       user: user
     });
-    // axios.getProfile(id)
-    //   .then(response => {
-    //     this.setState({
-    //       id: response.data.id,
-    //       name: response.data.name,
-    //       description: response.data.description
-    //     });
-    //     // console.log('from server route!!', response.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
   }
 
   updateProfiles() {
@@ -76,17 +53,11 @@ class Main extends Component {
         this.setState({
           profiles: response.data
         });
-        // console.log('should be all users', response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
   }
-
-
-  // deleteProfile() {
-  //
-  // }
 
   render() {
 

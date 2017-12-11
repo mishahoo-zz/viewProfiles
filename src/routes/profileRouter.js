@@ -23,7 +23,6 @@ profileRouter.route('/').get(function (req, res) {
 // Defined store route
 // Add multer middleware!!!!
 profileRouter.route('/add').post( upload.single('photo'), function (req, res) {
-  console.log('in server add user route', req.body, req.file.filename);
   var profile = new Profile({...req.body, photo: req.file.filename});
       profile.save()
     .then(profile => {
@@ -37,7 +36,6 @@ profileRouter.route('/add').post( upload.single('photo'), function (req, res) {
 
 // Defined edit route
 profileRouter.route('/edit/:id').get(function (req, res) {
-  console.log('inside edit route', req.params.name);
   var id = req.params.id;
   Profile.findById(id, function (err, profile){
       res.json(profile);
@@ -46,7 +44,6 @@ profileRouter.route('/edit/:id').get(function (req, res) {
 
 // Defined find by name route
 profileRouter.route('/find/:name').get(function (req, res) {
-  console.log('inside find by name route', req.params.name);
   var nameInfo = { name: req.params.name };
   Profile.findOne(nameInfo, function (err, profile){
       res.json(profile);
@@ -55,14 +52,11 @@ profileRouter.route('/find/:name').get(function (req, res) {
 
 //  Defined update route
 profileRouter.route('/update/:id').post( upload.single('photo'), function (req, res) {
-  console.log('in server update route', req.body, req.file.filename);
   Profile.findById(req.params.id, function(err, profile) {
     if (!profile)
       return next(new Error('Could not find profile'));
     else {
       // do your updates here
-      console.log('profile was found', profile);
-      console.log('req.body', req.body);
 
       profile.photo = req.file.filename;
       profile.name = req.body.name;

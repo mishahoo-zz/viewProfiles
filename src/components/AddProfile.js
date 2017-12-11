@@ -16,10 +16,8 @@ class EditInfo extends Component {
     componentDidMount(){}
 
     handleAddUserClick(user) {
-      // console.log(user);
       axios.addProfile(user).then(response => {
-        console.log('user added');
-        // console.log(response.data);
+        console.log('Profile Added');
         this.props.handleProfileClick(response.data);
         this.props.updateProfiles();
       })
@@ -27,19 +25,6 @@ class EditInfo extends Component {
         console.log(error);
       })
     }
-
-    // handleEditProfileClick() {
-    //   axios.updateProfile('5a2c7ffc60443d1559557393', {
-    //     photo: 'Sarah',
-    //     name: 'Sarah',
-    //     description: 'More and more stuff'
-    //   }).then(response => {
-    //     console.log('Comment Updated');
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
-    // }
 
     onSubmit(e, props) {
       e.preventDefault();
@@ -50,11 +35,9 @@ class EditInfo extends Component {
       }
       this.handleAddUserClick(user);
       this.setState({redirect: true});
-      // console.log(e.target.name.value, e.target.description.value);
     }
 
     onDrop(files) {
-      console.log('photo files', files[0])
       this.setState({
         photo: files[0]
       });

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import { deleteProfile } from '../axiosCalls'
 
+//deleting profile from here is not good practice
 const Profile = ({profile, handleProfileClick, updateProfiles}) => (
   <div className="small-profile">
     <div onClick={() => {
-      console.log('user id', profile._id)
       handleProfileClick(profile)
     }}>
       <Link className="link" to='/'>
@@ -16,7 +16,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
         <h3>{profile.name}</h3>
       </Link>
     </div>
-    <button type="button" onClick={() => {
+    {/* <button type="button" onClick={() => {
       deleteProfile(profile._id)
         .then(response => {
           console.log('profile deleted', response.data);
@@ -25,7 +25,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
         .catch(function (error) {
           console.log(error);
         })
-    }}>delete</button>
+    }}>delete</button> */}
   </div>
 )
 

@@ -19,7 +19,6 @@ class EditProfile extends Component {
     handleEditProfileClick(id, user) {
       axios.updateProfile(id, user).then(response => {
         console.log('Profile Updated');
-        // console.log('after edit', response.data)
         this.props.handleProfileClick(response.data);
         this.props.updateProfiles();
       }).catch(function (error) {
@@ -37,11 +36,9 @@ class EditProfile extends Component {
       }
       this.handleEditProfileClick(id, user);
       this.setState({redirect: true});
-      console.log('from onSubmit', user);
     }
 
     onDrop(files) {
-      console.log('photo files', files[0])
       this.setState({
         photo: files[0]
       });
