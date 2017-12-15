@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import DropZone from 'react-dropzone';
 
-import * as axios from '../axiosCalls'
+import * as api from '../util/api'
 
 class EditInfo extends Component {
 
@@ -16,7 +16,7 @@ class EditInfo extends Component {
     componentDidMount(){}
 
     handleAddUserClick(user) {
-      axios.addProfile(user).then(response => {
+      api.addProfile(user).then(response => {
         console.log('Profile Added');
         this.props.handleProfileClick(response.data);
         this.props.updateProfiles();

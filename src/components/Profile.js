@@ -16,7 +16,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
         <h3>{profile.name}</h3>
       </Link>
     </div>
-    {/* <button type="button" onClick={() => {
+    <button type="button" onClick={() => {
       deleteProfile(profile._id)
         .then(response => {
           console.log('profile deleted', response.data);
@@ -25,7 +25,7 @@ const Profile = ({profile, handleProfileClick, updateProfiles}) => (
         .catch(function (error) {
           console.log(error);
         })
-    }}>x</button> */}
+    }}>x</button>
   </div>
 )
 

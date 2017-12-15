@@ -5,7 +5,7 @@ import EditProfile from './EditProfile'
 import Profiles from './Profiles'
 import MainProfile from './MainProfile'
 
-import * as axios from '../axiosCalls'
+import * as api from '../util/api'
 
 // The Main component renders one of the provided
 // Routes (provided that one matches).
@@ -22,7 +22,7 @@ class Main extends Component {
 
   componentDidMount(){
     const name = 'Misha'
-    axios.getProfileByName(name)
+    api.getProfileByName(name)
       .then(extractData)
       // .then(this.setState.bind(this))
       .then((profile) => {
@@ -30,7 +30,7 @@ class Main extends Component {
       })
       .catch(console.error)
 
-    axios.getProfiles()
+    api.getProfiles()
       .then(response => {
         this.setState({
           profiles: response.data
@@ -48,7 +48,7 @@ class Main extends Component {
   }
 
   updateProfiles() {
-    axios.getProfiles()
+    api.getProfiles()
       .then(response => {
         this.setState({
           profiles: response.data
