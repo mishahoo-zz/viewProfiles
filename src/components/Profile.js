@@ -14,7 +14,10 @@ const Profile = ({profile, handleProfileClick, handleDeleteProfileClick}) => (
         <h3>{profile.name}</h3>
       </Link>
     </div>
-    <button type="button" onClick={() => handleDeleteProfileClick(profile._id)}>x</button>
+    { (profile.name === 'Misha') ?
+      <div></div> :
+      <button type="button" onClick={() => handleDeleteProfileClick(profile._id)}>remove</button>
+    }
   </div>
 )
 
