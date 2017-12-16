@@ -7,9 +7,6 @@ import MainProfile from './MainProfile'
 
 import * as api from '../util/api'
 
-// The Main component renders one of the provided
-// Routes (provided that one matches).
-const extractData = (response) => response.data
 
 class Main extends Component {
   constructor(props) {
@@ -23,7 +20,6 @@ class Main extends Component {
   componentDidMount(){
     const name = 'Misha'
     api.getProfileByName(name)
-      .then(extractData)
       // .then(this.setState.bind(this))
       .then((profile) => {
         this.setState({user: profile})
@@ -31,9 +27,9 @@ class Main extends Component {
       .catch(console.error)
 
     api.getProfiles()
-      .then(response => {
+      .then(profiles => {
         this.setState({
-          profiles: response.data
+          profiles: profiles
         });
       })
       .catch(function (error) {
@@ -49,9 +45,9 @@ class Main extends Component {
 
   updateProfiles() {
     api.getProfiles()
-      .then(response => {
+      .then(profiles => {
         this.setState({
-          profiles: response.data
+          profiles: profiles
         });
       })
       .catch(function (error) {

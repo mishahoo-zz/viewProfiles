@@ -16,9 +16,9 @@ class EditInfo extends Component {
     componentDidMount(){}
 
     handleAddUserClick(user) {
-      api.addProfile(user).then(response => {
+      api.addProfile(user).then(profile => {
         console.log('Profile Added');
-        this.props.handleProfileClick(response.data);
+        this.props.handleProfileClick(profile);
         this.props.updateProfiles();
       })
       .catch(function (error) {

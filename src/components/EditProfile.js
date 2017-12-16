@@ -17,9 +17,9 @@ class EditProfile extends Component {
 
 
     handleEditProfileClick(id, user) {
-      api.updateProfile(id, user).then(response => {
+      api.updateProfile(id, user).then(profile => {
         console.log('Profile Updated');
-        this.props.handleProfileClick(response.data);
+        this.props.handleProfileClick(profile);
         this.props.updateProfiles();
       }).catch(function (error) {
         console.log(error);
