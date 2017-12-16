@@ -59,6 +59,17 @@ class Main extends Component {
       })
   }
 
+  handleDeleteProfileClick(id) {
+    api.deleteProfile(id)
+      .then(response => {
+        console.log('profile deleted', response.data);
+        this.updateProfiles();
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
   render() {
 
     const MyMainProfile = (props) => {
@@ -74,7 +85,7 @@ class Main extends Component {
         <Profiles
           profiles={this.state.profiles}
           handleProfileClick={this.handleProfileClick.bind(this)}
-          updateProfiles={this.updateProfiles.bind(this)}
+          handleDeleteProfileClick={this.handleDeleteProfileClick.bind(this)}
         />
       )
     }
